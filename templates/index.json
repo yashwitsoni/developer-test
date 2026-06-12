@@ -1,0 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_V9JMPn": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% form 'contact', id: 'call-form' %}\n  <div class=\"call-form-close-row\">\n    <a class=\"close-btn\">&#x2715;</a>\n  </div>\n  <h3 class=\"form-heading\">Schedule a Call</h3>\n  <div class=\"form-details\">\n    <div class=\"form-name parts\">\n      <label for=\"name\" class=\"form-label\">Name</label>\n      <input id=\"name\" class=\"form-input\" type=\"text\" placeholder=\"Your Name\" name=\"contact[name]\">\n    </div>\n    <div class=\"form-email parts\">\n      <label for=\"email\" class=\"form-label\">Email Address</label>\n      <input id=\"email\" class=\"form-input\" type=\"email\" placeholder=\"Your Email\" name=\"contact[email]\">\n    </div>\n    <div class=\"form-contact parts\">\n      <label for=\"contact-no\" class=\"form-label\">Contact Number</label>\n      <input id=\"contact-no\" class=\"form-input\" type=\"tel\" placeholder=\"Phone number\" name=\"contact[phone]\">\n    </div>\n    <div class=\"form-time parts\">\n      <label for=\"time-slot\" class=\"form-label\">Time Slot (GMT + 5:30)</label>\n      <select id=\"time-slot\" class=\"form-input\" name=\"contact[Time Slot]\">\n        <option>09:00 a.m. - 12:00 p.m.</option>\n        <option>12:00 p.m. - 04:00 p.m.</option>\n        <option>4:00 p.m. - 07:00 p.m.</option>\n      </select>\n    </div>\n    <div class=\"form-date parts\">\n      <label for=\"date\" class=\"form-label\">Date</label>\n      <input id=\"date\" class=\"form-input\" type=\"date\" name=\"contact[date]\">\n    </div>\n\n    <!-- File Upload -->\n    <div class=\"form-file parts\">\n      <label for=\"file-upload\" class=\"form-label\">\n        Attach a File <span class=\"file-hint\">(PDF, JPG, PNG — max 1MB)</span>\n      </label>\n      <input\n        id=\"file-upload\"\n        class=\"form-input\"\n        type=\"file\"\n        accept=\".pdf,.jpg,.jpeg,.png\"\n      >\n      <input type=\"hidden\" name=\"contact[attachment]\" id=\"file-data-hidden\">\n\n      <!-- File info: name + URL -->\n      <div id=\"file-info\" style=\"display: none; margin-top: 8px;\">\n        <p id=\"file-name-display\" style=\"font-size: 13px; margin: 0 0 4px;\"></p>\n        <a id=\"file-url-display\" href=\"#\" target=\"_blank\" style=\"font-size: 12px; word-break: break-all;\"></a>\n      </div>\n\n      <!-- Image preview (only shows for image files) -->\n      <div id=\"image-preview-wrap\" style=\"display: none; margin-top: 10px;\">\n        <img\n          id=\"image-preview\"\n          src=\"\"\n          alt=\"Preview\"\n          style=\"max-width: 100%; max-height: 200px; border-radius: 6px; border: 1px solid #ddd; object-fit: contain;\"\n        >\n      </div>\n    </div>\n\n  </div>\n\n  <div class=\"alert-message\" style=\"display: none; color: red;\"></div>\n\n  <div class=\"btn-submit\">\n    <button name=\"btn\" class=\"submit\" id=\"submit-btn\" type=\"submit\">Submit</button>\n  </div>\n{% endform %}\n\n<script>\n  (function () {\n    const fileInput      = document.getElementById('file-upload');\n    const hiddenInput    = document.getElementById('file-data-hidden');\n    const fileInfo       = document.getElementById('file-info');\n    const fileNameEl     = document.getElementById('file-name-display');\n    const fileUrlEl      = document.getElementById('file-url-display');\n    const previewWrap    = document.getElementById('image-preview-wrap');\n    const previewImg     = document.getElementById('image-preview');\n    const alertBox       = document.querySelector('.alert-message');\n    const form           = document.getElementById('call-form');\n    const MAX_SIZE_BYTES = 1 * 1024 * 1024; // 1MB\n    const IMAGE_TYPES    = ['image/jpeg', 'image/png'];\n\n    // Track the current blob URL so we can revoke it on new selection\n    let currentBlobUrl = null;\n\n    function showError(msg) {\n      alertBox.textContent = msg;\n      alertBox.style.display = 'block';\n    }\n\n    function clearError() {\n      alertBox.textContent = '';\n      alertBox.style.display = 'none';\n    }\n\n    function resetPreview() {\n      fileInfo.style.display = 'none';\n      previewWrap.style.display = 'none';\n      previewImg.src = '';\n      fileNameEl.textContent = '';\n      fileUrlEl.textContent = '';\n      fileUrlEl.href = '#';\n\n      // Clean up the old blob URL to free memory\n      if (currentBlobUrl) {\n        URL.revokeObjectURL(currentBlobUrl);\n        currentBlobUrl = null;\n      }\n    }\n\n    fileInput.addEventListener('change', function () {\n      clearError();\n      hiddenInput.value = '';\n      resetPreview();\n\n      const file = this.files[0];\n      if (!file) return;\n\n      // Size check\n      if (file.size > MAX_SIZE_BYTES) {\n        showError('File is too large. Please upload something under 1MB.');\n        this.value = '';\n        return;\n      }\n\n      // Type check\n      const allowed = ['application/pdf', 'image/jpeg', 'image/png'];\n      if (!allowed.includes(file.type)) {\n        showError('Only PDF, JPG, and PNG files are allowed.');\n        this.value = '';\n        return;\n      }\n\n      // Create a blob URL for display (lightweight, doesn't affect the submit payload)\n      currentBlobUrl = URL.createObjectURL(file);\n\n      // Show file name and URL\n      fileNameEl.textContent = '📎 ' + file.name;\n      fileUrlEl.textContent  = currentBlobUrl;\n      fileUrlEl.href         = currentBlobUrl;\n      fileInfo.style.display = 'block';\n\n      // If it's an image, show the preview\n      if (IMAGE_TYPES.includes(file.type)) {\n        previewImg.src             = currentBlobUrl;\n        previewWrap.style.display  = 'block';\n      }\n\n      // Still convert to base64 for the hidden field so it submits with the form\n      const reader = new FileReader();\n      reader.onload = function (e) {\n        hiddenInput.value = e.target.result;\n      };\n      reader.onerror = function () {\n        showError('Could not read the file. Please try again.');\n        resetPreview();\n      };\n      reader.readAsDataURL(file);\n    });\n\n    // Basic required-field validation before submit\n    form.addEventListener('submit', function (e) {\n      clearError();\n      const name  = document.getElementById('name').value.trim();\n      const email = document.getElementById('email').value.trim();\n\n      if (!name || !email) {\n        e.preventDefault();\n        showError('Name and email are required.');\n      }\n    });\n  })();\n</script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "177943489097c944df": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_WHqLVn": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "1000287",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_WHqLVn"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "custom_liquid_V9JMPn",
+    "177943489097c944df"
+  ]
+}
