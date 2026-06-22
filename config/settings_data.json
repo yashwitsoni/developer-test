@@ -264,6 +264,11 @@
           "show_trending_products": true,
           "popular_products": []
         }
+      },
+      "13897900069594145190": {
+        "type": "shopify://apps/accessibility-assistant/blocks/app-embed/e146c6fb-5384-4cc3-946f-03621d06f241",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
