@@ -1,6 +1,20 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
+    
+<!-- Feedback snippet START -->
+<script type="text/javascript" async defer>
+  if (
+    new URLSearchParams(window.location.search).get("feedback") ||
+    sessionStorage.getItem("review-mode") === "true"
+  ) {
+    var s = document.createElement("script");
+    s.src = "https://feedback-cdn.marmeto.org/feedback.js?projectID=8da4b085-da03-4bc4-b490-b8969b9c0ffc";
+    s.async = true;
+    document.head.appendChild(s);
+  }
+</script>
+<!-- Feedback snippet END -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
