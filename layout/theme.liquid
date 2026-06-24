@@ -316,6 +316,20 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    <script>
+  document.addEventListener('paste', async (e) => {
+  const items = e.clipboardData.items;
+
+  for (const item of items) {
+    if (item.type.indexOf('image') !== -1) {
+      const file = item.getAsFile();
+
+      // image ko visual search app/API ko bhejo
+      console.log(file);
+    }
+  }
+});
+</script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
