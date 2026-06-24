@@ -29,6 +29,7 @@ class CartDrawer extends HTMLElement {
     if (triggeredBy) this.setActiveElement(triggeredBy);
     const cartDrawerNote = this.querySelector('[id^="Details-"] summary');
     if (cartDrawerNote && !cartDrawerNote.hasAttribute('role')) this.setSummaryAccessibility(cartDrawerNote);
+    this.setOpenText('Your drawer is now open');
     // here the animation doesn't seem to always get triggered. A timeout seem to help
     setTimeout(() => {
       this.classList.add('animate', 'active');
@@ -47,6 +48,20 @@ class CartDrawer extends HTMLElement {
     );
 
     document.body.classList.add('overflow-hidden');
+  }
+
+  setOpenText(text) {
+    const header = this.querySelector('.drawer__header');
+    if (!header) return;
+
+    let openText = header.querySelector('.drawer__open-text');
+    if (!openText) {
+      openText = document.createElement('p');
+      openText.className = 'drawer__open-text';
+      header.appendChild(openText);
+    }
+
+    openText.textContent = text;
   }
 
   close() {
