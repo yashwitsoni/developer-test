@@ -106,3 +106,17 @@
     </div>
   </details>
 </details-modal>
+<script>
+  document.addEventListener('paste', async (e) => {
+  const items = e.clipboardData.items;
+
+  for (const item of items) {
+    if (item.type.indexOf('image') !== -1) {
+      const file = item.getAsFile();
+
+      // image ko visual search app/API ko bhejo
+      console.log(file);
+    }
+  }
+});
+</script>
