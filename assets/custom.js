@@ -1,7 +1,7 @@
 document.addEventListener('cart:updated', function() {
     alert('Cart updated!');
   // Get cart quantity
-  const cartItems = document.querySelectorAll('.cart-item');
+  const cartItems = document.querySelectorAll('.cart-item-1');
   const totalQuantity = Array.from(cartItems).reduce((sum, item) => {
     const quantity = parseInt(item.querySelector('[data-quantity]')?.textContent || 0);
     return sum + quantity;
